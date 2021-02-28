@@ -114,6 +114,21 @@ Official documentation
 [Vuex documentation](https://vuex.vuejs.org/)
 
 
+### Vue-i18n
+
+Locales management (Official)
+
+Installation
+
+```
+vue add i18n
+```
+
+Official documentation
+
+[Vue i18n documentation](https://kazupon.github.io/vue-i18n/introduction.html#sponsors)
+
+
 ### Vuetify
 
 Vuetify is a complete UI framework built on top of Vue.js. The goal of the project is to provide developers with the tools they need to build rich and engaging user experiences.
