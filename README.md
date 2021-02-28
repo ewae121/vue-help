@@ -73,3 +73,89 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+Nice example
+-------------
+
+[Creative Tim Dashboard example](https://demos.creative-tim.com/vuetify-material-dashboard/#/)
+
+
+Cool Libs
+-----------
+
+### Vue Router
+
+Manage routing in application (Official)
+
+Installation
+
+```
+vue add router
+```
+
+Official documentation
+
+[Vue Router documentation](https://router.vuejs.org/)
+
+
+### Vuex
+
+Store to share data between components (Official)
+
+Installation
+
+```
+vue add vuex
+```
+
+Official documentation
+
+[Vuex documentation](https://vuex.vuejs.org/)
+
+
+### Vuetify
+
+Vuetify is a complete UI framework built on top of Vue.js. The goal of the project is to provide developers with the tools they need to build rich and engaging user experiences.
+
+
+Installation
+
+```
+vue add vuetify
+```
+
+Official documentation
+
+[Vuetify documentation](https://vuetifyjs.com/en/introduction/why-vuetify/)
+
+
+### ChartJs
+
+Components to make great charts
+
+Installation
+
+```
+npm install vue-chartjs
+```
+
+Official documentation
+
+[ChartJs documentation](https://www.chartjs.org/)
+[ChartJs sample](https://www.chartjs.org/samples/latest/)
+
+
+### Vue Grid layout
+
+Help to make complex grid layout with drag and drop, resize...
+
+Installation
+
+```
+npm install vue-grid-layout --save
+```
+
+Official documentation
+
+[Vue Grid Layout documentation](https://jbaysolutions.github.io/vue-grid-layout/)
