@@ -1,213 +1,59 @@
-# Vue 2 help
+# Docker help
 
 Memo on what was interesting things about VueJs
 
-## Install a clean version on Ubuntu 20.04 with vue-cli command
-
-* Ensure that nodejs package is not installed
+## Remove all images
 
 ```
-sudo apt remove nodejs
+docker kill $(docker ps -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+docker rmi -f$(docker images -q)
+docker rmi -f $(docker images -q)
 ```
 
-In a new bash, **__npm__** command should not be available anymore.
+## Move docker /var/lib
 
-
-* Install NVM:
-
-```
-curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh -o install_nvm.sh
-bash install_nvm.sh
-source ~/.profile
-```
-
-Install the right version from NVM:
+### Stop docker
 
 ```
-nvm install 14.5
-nvm use 14.5.0
-nvm alias default 14.5.0
-nvm alias default node
+sudo service docker stop
 ```
 
-and start a new bash
+### Update docker configuration
 
-## Project setup
+__I place it to /home/docker often or a separate partition__
 
-```
-npm install
-```
-
-Install @vue/cli 4.5.9
------------
-
-* Ensure that vue-cli package 2.9.6 is not installed. Otherwise vuetify will not be installable.
+Add a file /etc/docker/daemon.json containing
 
 ```
-npm remove vue-cli
-npm remove -g vue-cli
+{ 
+   "data-root": "/path/to/your/docker" 
+}
 ```
 
-In a new bash, **__vue__** command should not be available.
+### Copy data to the new folder
 
 ```
-npm install -g @vue/cli
+sudo rsync -aP /var/lib/docker/ /path/to/your/docker
 ```
 
-and start a new bash
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-
-Nice example
--------------
-
-[Creative Tim Dashboard example](https://demos.creative-tim.com/vuetify-material-dashboard/#/)
-
-
-Cool Libs
------------
-
-### Vue Router
-
-Manage routing in application (Official)
-
-Installation
+### Save the data
 
 ```
-vue add router
+sudo mv /var/lib/docker /var/lib/docker.old
 ```
 
-Official documentation
-
-[Vue Router documentation](https://router.vuejs.org/)
-
-
-### Vuex
-
-Store to share data between components (Official)
-
-Installation
+### Restart the service
 
 ```
-vue add vuex
+sudo service docker start
 ```
 
-Official documentation
+### Test
 
-[Vuex documentation](https://vuex.vuejs.org/)
-
-
-### Vue-i18n
-
-Locales management (Official)
-
-Installation
+Test it and if everything works fine. You can remove the folder.
 
 ```
-vue add i18n
+sudo rm -rf /var/lib/docker.old
 ```
-
-Official documentation
-
-[Vue i18n documentation](https://kazupon.github.io/vue-i18n/introduction.html#sponsors)
-
-#### Tooling
-
-Installation:
-
-
-```
-npm install --save-dev vue-i18n-extract
-```
-
-Init a config file:
-
-
-```
-yarn run vue-i18n-extract init
-```
-
-Edit config file __vue-i18n-extract.config.js__ as following:
-
-```json
-module.exports = {
-  vueFilesPath: './src/**/*.?(js|vue)', // The Vue.js file(s) you want to extract i18n strings from. It can be a path to a folder or to a file. It accepts glob patterns. (ex. *, ?, (pattern|pattern|pattern)
-  languageFilesPath: './src/locales/*.json', // The language file(s) you want to compare your Vue.js file(s) to. It can be a path to a folder or to a file. It accepts glob patterns (ex. *, ?, (pattern|pattern|pattern)
-  options: {
-    output: false, // false | string => Use if you want to create a json file out of your report. (ex. output.json)
-    add: false, // false | true => Use if you want to add missing keys into your json language files.
-    dynamic: false, // false | 'ignore' | 'report' => 'ignore' if you want to ignore dynamic keys false-positive. 'report' to get dynamic keys report.
-  }
-};
-```
-
-Stats your code:
-
-```
-yarn run vue-i18n-extract use-config
-```
-
-
-
-### Vuetify
-
-Vuetify is a complete UI framework built on top of Vue.js. The goal of the project is to provide developers with the tools they need to build rich and engaging user experiences.
-
-
-Installation
-
-```
-vue add vuetify
-```
-
-Official documentation
-
-[Vuetify documentation](https://vuetifyjs.com/en/introduction/why-vuetify/)
-
-
-### ChartJs
-
-Components to make great charts
-
-Installation
-
-```
-npm install vue-chartjs
-```
-
-Official documentation
-
-[ChartJs documentation](https://www.chartjs.org/)
-[ChartJs sample](https://www.chartjs.org/samples/latest/)
-
-
-### Vue Grid layout
-
-Help to make complex grid layout with drag and drop, resize...
-
-Installation
-
-```
-npm install vue-grid-layout --save
-```
-
-Official documentation
-
-[Vue Grid Layout documentation](https://jbaysolutions.github.io/vue-grid-layout/)
